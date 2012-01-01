@@ -121,6 +121,7 @@ JVM_IHashCode(JNIEnv *env, jobject _obj) {
   llvm_gcroot(obj, 0);
 
   jint hash = (obj == NULL) ? 0 : JavaObject::hashCode(obj);
+  hash &= 0x7FFFFFFF;
   return hash;
 }
 
